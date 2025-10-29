@@ -1,5 +1,8 @@
 # Experiment 5: Subqueries and Views
 
+## NAME : HARISH S
+## REG.NO: 212224110022
+
 ## AIM
 To study and implement subqueries and views.
 
@@ -38,123 +41,174 @@ DROP VIEW view_name;
 
 **Question 1**
 --
--- Paste Question 1 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is EQUAL TO $1500.
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT *
+FROM CUSTOMERS
+WHERE SALARY = 1500;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1227" height="407" alt="image" src="https://github.com/user-attachments/assets/21230cc3-7c2a-4a8d-9a13-05ceb783f107" />
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose Address as Delhi
 
 ```sql
--- Paste your SQL code below for Question 2
+SELECT *
+FROM CUSTOMERS
+WHERE ADDRESS = 'Delhi';
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1233" height="415" alt="image" src="https://github.com/user-attachments/assets/38e7dea9-c15c-480f-9e60-540fbda345f8" />
 
 **Question 3**
 ---
--- Paste Question 3 here
+From the following tables, write a SQL query to find all the orders generated in New York city. Return ord_no, purch_amt, ord_date, customer_id and salesman_id.
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT o.ord_no, 
+       o.purch_amt, 
+       o.ord_date, 
+       o.customer_id, 
+       o.salesman_id
+FROM ORDERS o
+JOIN SALESMAN s
+     ON o.salesman_id = s.salesman_id
+WHERE s.city = 'New York';
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1221" height="566" alt="image" src="https://github.com/user-attachments/assets/1a1d0b43-2d05-467f-8dda-8b5d7f34e6fd" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query that retrieves the names of students and their corresponding grades, where the grade is equal to the minimum grade achieved in each subject.
 
 ```sql
--- Paste your SQL code below for Question 4
+SELECT student_name, grade
+FROM GRADES g
+WHERE grade = (
+    SELECT MIN(grade)
+    FROM GRADES
+    WHERE subject = g.subject
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="808" height="504" alt="image" src="https://github.com/user-attachments/assets/c4043991-c623-45a4-aea1-d57944821ca2" />
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to Retrieve the names and cities of customers who have the same city as customers with IDs 3 and 7
 
 ```sql
--- Paste your SQL code below for Question 5
+SELECT name, city
+FROM customer
+WHERE city IN (
+    SELECT city 
+    FROM customer 
+    WHERE id IN (3, 7)
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="580" height="538" alt="image" src="https://github.com/user-attachments/assets/45454949-e09a-4fc7-9087-137ff542ed84" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to List departments with names longer than the average length
 
 ```sql
--- Paste your SQL code below for Question 6
+SELECT department_id, department_name
+FROM Departments
+WHERE LENGTH(department_name) > (
+    SELECT AVG(LENGTH(department_name)) 
+    FROM Departments
+);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="621" height="470" alt="image" src="https://github.com/user-attachments/assets/8dc1d8c9-e67a-4d86-8ab9-e0fda4dd03d9" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query that retrieve all the columns from the table "Grades", where the grade is equal to the maximum grade achieved in each subject.
 
 ```sql
--- Paste your SQL code below for Question 7
+SELECT *
+FROM GRADES g
+WHERE grade = (
+    SELECT MAX(grade)
+    FROM GRADES
+    WHERE subject = g.subject
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1233" height="528" alt="image" src="https://github.com/user-attachments/assets/74a546a6-1604-4d9a-b07e-85237caa2e2c" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+From the following tables, write a SQL query to find all the orders issued by the salesman 'Paul Adam'. Return ord_no, purch_amt, ord_date, customer_id and salesman_id.
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT o.ord_no, 
+       o.purch_amt, 
+       o.ord_date, 
+       o.customer_id, 
+       o.salesman_id
+FROM ORDERS o
+JOIN SALESMAN s
+     ON o.salesman_id = s.salesman_id
+WHERE s.name = 'Paul Adam';
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1230" height="472" alt="image" src="https://github.com/user-attachments/assets/c85dacf9-61d8-40a0-a6eb-ccb2ea51663a" />
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is greater than $1500.
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT *
+FROM CUSTOMERS
+WHERE SALARY > 1500;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1231" height="686" alt="image" src="https://github.com/user-attachments/assets/31491202-11ff-4513-97f6-fdee56d7bf6c" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL query that retrieves the names of students and their corresponding grades, where the grade is equal to the maximum grade achieved in each subject.
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT student_name, grade
+FROM GRADES g
+WHERE grade = (
+    SELECT MAX(grade)
+    FROM GRADES
+    WHERE subject = g.subject
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="791" height="510" alt="image" src="https://github.com/user-attachments/assets/b30c6445-75f3-4b44-9a17-7418d09b0869" />
 
 
 ## RESULT
